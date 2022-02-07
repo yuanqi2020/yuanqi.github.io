@@ -18,16 +18,16 @@
   
   
   <title>flask启动 | Hexo</title>
-  <meta name="description" content="如何启动Flask？？？命令行 python *.py runserver  关于Wrapper的练习 Wrapper用于装饰器，在不修改原代码的情况下，进行函数改造，进而加快代码构建。  参考代码  参考教程：廖雪峰的Python教程-装饰器">
+  <meta name="description" content="如何启动Flask？？？命令行 python *.py runserver  关于Wrapper的练习 Wrapper用于装饰器，在不修改原代码的情况下，进行函数改造，进而加快代码构建。  参考代码  参考教程：廖雪峰的Python教程-装饰器 参考使用场景 blog.py 123456789101112131415161718192021222324@bp.route(&quot;&#x2F;create">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flask启动">
 <meta property="og:url" content="https://yuanqi2020.github.io/2022/02/07/flask%E5%90%AF%E5%8A%A8/index.html">
 <meta property="og:site_name" content="Yuanqi">
-<meta property="og:description" content="如何启动Flask？？？命令行 python *.py runserver  关于Wrapper的练习 Wrapper用于装饰器，在不修改原代码的情况下，进行函数改造，进而加快代码构建。  参考代码  参考教程：廖雪峰的Python教程-装饰器">
+<meta property="og:description" content="如何启动Flask？？？命令行 python *.py runserver  关于Wrapper的练习 Wrapper用于装饰器，在不修改原代码的情况下，进行函数改造，进而加快代码构建。  参考代码  参考教程：廖雪峰的Python教程-装饰器 参考使用场景 blog.py 123456789101112131415161718192021222324@bp.route(&quot;&#x2F;create">
 <meta property="og:locale" content="zh_CH">
 <meta property="og:image" content="https://i.imgur.com/oI1iCZt.png">
 <meta property="article:published_time" content="2022-02-07T13:03:56.000Z">
-<meta property="article:modified_time" content="2022-02-07T16:20:19.352Z">
+<meta property="article:modified_time" content="2022-02-07T16:24:02.553Z">
 <meta property="article:author" content="Yuanqi">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.imgur.com/oI1iCZt.png">
@@ -306,6 +306,20 @@
 <p>参考代码</p>
 <p><img src="https://i.imgur.com/oI1iCZt.png" alt="image-20220208001924321"></p>
 <p>参考教程：<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017451662295584">廖雪峰的Python教程-装饰器</a></p>
+<p>参考使用场景</p>
+<p><strong>blog.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@bp.route(<span class="params"><span class="string">&quot;/create&quot;</span>, methods=(<span class="params"><span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span></span>)</span>)</span></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Create a new post for the current user.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">        title = request.form[<span class="string">&quot;title&quot;</span>]</span><br><span class="line">        body = request.form[<span class="string">&quot;body&quot;</span>]</span><br><span class="line">        error = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> title:</span><br><span class="line">            error = <span class="string">&quot;Title is required.&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> error <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            flash(error)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            db = get_db()</span><br><span class="line">            db.execute(</span><br><span class="line">                <span class="string">&quot;INSERT INTO post (title, body, author_id) VALUES (?, ?, ?)&quot;</span>,</span><br><span class="line">                (title, body, g.user[<span class="string">&quot;id&quot;</span>]),</span><br><span class="line">            )</span><br><span class="line">            db.commit()</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&quot;blog.index&quot;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;blog/create.html&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>auth.py</strong></p>
+<blockquote>
+<p>在面向对象（OOP）的设计模式中，decorator被称为装饰模式。OOP的装饰模式需要通过继承和组合来实现，而Python除了能支持OOP的decorator外，直接从语法层次支持decorator。Python的decorator可以用函数实现，也可以用类实现。</p>
+<p>decorator可以增强函数的功能，定义起来虽然有点复杂，但使用起来非常灵活和方便</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">login_required</span>(<span class="params">view</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;View decorator that redirects anonymous users to the login page.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @functools.wraps(<span class="params">view</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapped_view</span>(<span class="params">**kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> g.user <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&quot;auth.login&quot;</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> view(**kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapped_view</span><br></pre></td></tr></table></figure>
+
+<p>代码片段来自：<a href="pallets/flask/examples/tutorial/">pallets&#x2F;flask&#x2F;examples&#x2F;tutorial&#x2F;</a></p>
 
       
     </div>
