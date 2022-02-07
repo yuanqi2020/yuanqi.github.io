@@ -1,302 +1,123 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  
-  <title>如何使用Shadowsocks以及ClashX或Trojan科学上网 | Hexo</title>
-  <meta name="description" content="购买链接：https:&#x2F;&#x2F;portal.shadowsocks.com&#x2F;aff.php?aff&#x3D;6996 本服务已经顺利运行6年以上。 为什么选择Trojan服务？ 便宜（90左右每年，19.95USB） 高流量（100Gb&#x2F;每月） 网速快 （可看Youtube超清视频不卡顿） 稳定 （24H*7不断线） 安全 支持支付宝购买  超多的服务器  免费的VPN存在什么风险？ 可能存在盗取你">
-<meta property="og:type" content="article">
-<meta property="og:title" content="如何使用Shadowsocks以及ClashX或Trojan科学上网">
-<meta property="og:url" content="https://yuanqi2020.github.io/2022/02/06/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowsocks%E4%BB%A5%E5%8F%8AClashX%E6%88%96Trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/index.html">
-<meta property="og:site_name" content="Yuanqi">
-<meta property="og:description" content="购买链接：https:&#x2F;&#x2F;portal.shadowsocks.com&#x2F;aff.php?aff&#x3D;6996 本服务已经顺利运行6年以上。 为什么选择Trojan服务？ 便宜（90左右每年，19.95USB） 高流量（100Gb&#x2F;每月） 网速快 （可看Youtube超清视频不卡顿） 稳定 （24H*7不断线） 安全 支持支付宝购买  超多的服务器  免费的VPN存在什么风险？ 可能存在盗取你">
-<meta property="og:locale" content="zh_CH">
-<meta property="og:image" content="https://i.imgur.com/KyHhGdU.png">
-<meta property="article:published_time" content="2022-02-06T13:52:59.000Z">
-<meta property="article:modified_time" content="2022-02-06T13:54:33.680Z">
-<meta property="article:author" content="Yuanqi">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/KyHhGdU.png">
-  <!-- Canonical links -->
-  <link rel="canonical" href="https://yuanqi2020.github.io/2022/02/06/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowsocks%E4%BB%A5%E5%8F%8AClashX%E6%88%96Trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/index.html">
-  
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>如何使用Shadowsocks以及ClashX或Trojan科学上网 | Yuanqi</title>
+    <meta name="author" content="Yuanqi" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="购买链接：https://portal.shadowsocks.com/aff.php?aff=6996本服务已经顺利运行6年以上。为什么选择Trojan服务？便宜（90左右每年，19.95USB）高流量（100Gb&amp;#x2F;每月）网速快 （可看Youtube超清视频不卡顿）稳定 （24H*7不断线）安全支持支付宝购买超多的服务器免费的VPN存在什么风险？可能存在盗取你的账号等信息（因为你的流量都要经过他VPN，所以你的账号也会通过他的免费服务器）天下没有免费的午餐不稳定限时限制流量网速慢Tr" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+    
     <link rel="alternate" href="/atom.xml" title="Yuanqi" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
-  
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    
 <link rel="stylesheet" href="/css/style.css">
 
-  
-  
-  
-  
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
 <meta name="generator" content="Hexo 6.0.0"></head>
+<body>
 
-
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/profeel" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">元奇</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">RPA布道者</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Guangzhou, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
-
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="Search" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
-        </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">Yuanqi</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
     </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
 
-
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+    <nav id="nav-inner" class="nav-inner">
         
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
         
-        <li class="menu-item menu-item-home">
-          <a href="/.">
-            
-            <i class="icon icon-home-fill"></i>
-            
-            <span class="menu-title">Home</span>
-          </a>
-        </li>
+            <a class="nav-item" href="/tags">
+                <span class="nav-text">标签</span>
+            </a>
         
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">归档</span>
+            </a>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">Archives</span>
-          </a>
-        </li>
+            <a class="nav-item" href="/atom.xml">
+                <span class="nav-text">订阅</span>
+            </a>
         
+            <a class="nav-item" href="/about">
+                <span class="nav-text">关于</span>
+            </a>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">Categories</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">Tags</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/profeel" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
     </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">Board</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>Wechat：profeelwang</p>
-            </div>
-        </div>
-    </div>
 </div>
 
-    
-      
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="https://yuanqi2020.github.io"></form>
 
-    
-      
-
-    
-      
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">Archive</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">4</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2022/02/07/flask%E5%90%AF%E5%8A%A8/" class="title">flask启动</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-02-07T13:03:56.000Z" itemprop="datePublished">2022-02-07</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2022/02/07/Flask%E5%AD%A6%E4%B9%A0%E7%AF%87-20220207/" class="title">Flask学习篇-20220207</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-02-07T04:45:18.000Z" itemprop="datePublished">2022-02-07</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2022/02/07/%E5%85%B3%E4%BA%8EHexo%E6%90%AD%E5%BB%BAGithubPages%E7%9A%84%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/" class="title">关于Hexo搭建GithubPages的操作教程</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-02-06T16:33:29.000Z" itemprop="datePublished">2022-02-07</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2022/02/06/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowsocks%E4%BB%A5%E5%8F%8AClashX%E6%88%96Trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="title">如何使用Shadowsocks以及ClashX或Trojan科学上网</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-02-06T13:52:59.000Z" itemprop="datePublished">2022-02-06</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
+        
+        
+        
 
-    
-  </div>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9Trojan%E6%9C%8D%E5%8A%A1%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">为什么选择Trojan服务？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%8D%E8%B4%B9%E7%9A%84VPN%E5%AD%98%E5%9C%A8%E4%BB%80%E4%B9%88%E9%A3%8E%E9%99%A9%EF%BC%9F"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">免费的VPN存在什么风险？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trojan-%E6%9C%8D%E5%8A%A1%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B%E7%B4%A2%E5%BC%95"><span class="toc-number">1.1.</span> <span class="toc-text">Trojan 服务客户端设置教程索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">iOS：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows%EF%BC%9A"><span class="toc-number">1.1.2.</span> <span class="toc-text">Windows：</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
 </aside>
 
-  
-  
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-如何使用Shadowsocks以及ClashX或Trojan科学上网" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+</header>
+
+        <div id="content" class="content">
+            <div id="wrapper" class="wrapper" style="max-width: 800px">
+                <article class="article" itemscope itemprop="blogPost">
     
-    <div class="article-header">
-      
+    <header class="article-header">
         
-  
-    <h1 class="article-title" itemprop="name">
-      如何使用Shadowsocks以及ClashX或Trojan科学上网
-    </h1>
-  
+        <h1 itemprop="name">
+            如何使用Shadowsocks以及ClashX或Trojan科学上网
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://yuanqi2020.github.io/2022/02/06/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowsocks%E4%BB%A5%E5%8F%8AClashX%E6%88%96Trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2022-02-06T13:52:59.000Z" itemprop="datePublished">2022-02-06</time>
+</a>
 
-      
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2022/02/06/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowsocks%E4%BB%A5%E5%8F%8AClashX%E6%88%96Trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="article-date">
-	  <time datetime="2022-02-06T13:52:59.000Z" itemprop="datePublished">2022-02-06</time>
-	</a>
-</span>
-        
-        
+            
 
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
         
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/02/06/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowsocks%E4%BB%A5%E5%8F%8AClashX%E6%88%96Trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/#comments" class="article-comment-link">Comments</a></span>
-        
-      </div>
-    </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
-      
         <p><strong>购买链接：<a target="_blank" rel="noopener" href="https://portal.shadowsocks.com/aff.php?aff=6996">https://portal.shadowsocks.com/aff.php?aff=6996</a></strong></p>
 <p>本服务已经顺利运行6年以上。</p>
 <h1 id="为什么选择Trojan服务？"><a href="#为什么选择Trojan服务？" class="headerlink" title="为什么选择Trojan服务？"></a>为什么选择Trojan服务？</h1><ul>
@@ -347,219 +168,139 @@
 <li><a target="_blank" rel="noopener" href="https://portal.shadowsocks.nz/knowledgebase/160/">命令行使用教程</a></li>
 </ul>
 
-      
-    </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="https://yuanqi2020.github.io/2022/02/06/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowsocks%E4%BB%A5%E5%8F%8AClashX%E6%88%96Trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="如何使用Shadowsocks以及ClashX或Trojan科学上网" target="_blank" rel="external">https://yuanqi2020.github.io/2022/02/06/如何使用Shadowsocks以及ClashX或Trojan科学上网/</a>
-    </li>
-    
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</blockquote>
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/profeel" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/profeel" target="_blank"><span class="text-dark">元奇</span><small class="ml-1x">RPA布道者</small></a></h3>
-        <div>永远好奇</div>
-      </div>
-    </figure>
-  </div>
-</div>
-
-
-    </div>
-  </article>
-  
-    
-  <section id="comments">
-  	
-      <div id="vcomments"></div>
-    
-  </section>
-
-
-  
-</div>
-
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/2022/02/07/%E5%85%B3%E4%BA%8EHexo%E6%90%AD%E5%BB%BAGithubPages%E7%9A%84%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/" title="关于Hexo搭建GithubPages的操作教程"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
-    
-    
-  </ul>
-  
-  
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
-  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
-    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
-  </div> -->
-  
-  
-  <div class="bar-right">
-    
-    <div class="share-component" data-sites="wechat" data-mobile-sites="qq"></div>
-    
-  </div>
-  </div>
-</nav>
-  
-<!-- Modal -->
-<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content donate">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modal-body">
-        <div class="donate-box">
-          <div class="donate-head">
-            <p>Maybe you could buy me a cup of coffee.</p>
-          </div>
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
-              <div class="donate-payimg">
-                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
-              </div>
-              <p class="text-muted mv">Scan this qrcode</p>
-              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
-              <div class="donate-payimg">
-                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
-              </div>
-              <p class="text-muted mv">Scan this qrcode</p>
-              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
-            </div>
-          </div>
-          <div class="donate-footer">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
-              </li>
-              <li role="presentation" class="">
-                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-</main>
-
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/profeel" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
         
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    <div class="copyright">
-    	
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
-        </div>
-    </div>
-</footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
-</script>
-
-<script src="/js/plugin.min.js"></script>
+    </section>
+</article>
 
 
-<script src="/js/application.js"></script>
 
 
+<a id="pageprev" href="/2022/02/07/%E5%85%B3%E4%BA%8EHexo%E6%90%AD%E5%BB%BAGithubPages%E7%9A%84%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/" class="article-prev" title="关于Hexo搭建GithubPages的操作教程"><i class="icon-arrow-left"></i></a>
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "d3707bd3578b5b8b03c8c64b844fc759",
+        distractionFreeMode: true,
+        title: "如何使用Shadowsocks以及ClashX或Trojan科学上网",
+        body: "https://yuanqi2020.github.io/2022/02/06/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowsocks%E4%BB%A5%E5%8F%8AClashX%E6%88%96Trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
 
 
 
+            </div>
+        </div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
 
-
-
-   
-
-
-
-
-   
     
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: '',
-    appKey: '',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?9a59622a81cfd4d516c7fb8083fd5a82";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</footer>
 
-     
+    </main>
 
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
 
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
 
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
 
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
 
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
 
+        $(window).on('resize', function() {
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        
+<script src="/js/scrollspy.min.js"></script>
+
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
 
 </body>
 </html>
