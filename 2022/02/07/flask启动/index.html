@@ -141,6 +141,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">login_required</span>(<span class="params">view</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;View decorator that redirects anonymous users to the login page.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @functools.wraps(<span class="params">view</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapped_view</span>(<span class="params">**kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> g.user <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&quot;auth.login&quot;</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> view(**kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapped_view</span><br></pre></td></tr></table></figure>
 
 <p>代码片段来自：<a href="pallets/flask/examples/tutorial/">pallets&#x2F;flask&#x2F;examples&#x2F;tutorial&#x2F;</a></p>
+<p>关于jupyter-lab 启动</p>
+<p>命令行执行<code>jupyter-lab</code></p>
 
         
     </section>
@@ -150,6 +152,8 @@
 
 <a id="pagenext" href="/2022/02/07/Flask%E5%AD%A6%E4%B9%A0%E7%AF%87-20220207/" class="article-next" title="Flask学习篇-20220207"><i class="icon-arrow-right"></i></a>
 
+
+<a id="pageprev" href="/2022/02/08/flask-bootstrap%E4%BC%98%E5%8C%96%E5%B8%83%E5%B1%80/" class="article-prev" title="flask bootstrap优化布局"><i class="icon-arrow-left"></i></a>
 
 
 
